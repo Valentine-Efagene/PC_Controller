@@ -11,7 +11,9 @@ import android.view.MenuItem;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.InetAddress;
 import java.net.Socket;
@@ -31,13 +33,23 @@ public class MouseActivity extends AppCompatActivity {
     private int port;
     private SocketTask socketTask;
     private boolean stillRunning = true;
-    private int x;
+    private int x = 0;
+    private int y = 0;
+    private String screenSize = null;
 
     public DisplayMetrics getDisplayMetrics() {
         return displayMetrics;
     }
 
     private DisplayMetrics displayMetrics;
+
+    public String getScreenSize() {
+        return screenSize;
+    }
+
+    public void setScreenSize(String s) {
+        screenSize = s;
+    }
 
     public int getY() {
         return y;
@@ -46,8 +58,6 @@ public class MouseActivity extends AppCompatActivity {
     public void setY(int y) {
         this.y = y;
     }
-
-    private int y;
 
     public int getX() {
         return x;
@@ -68,14 +78,20 @@ public class MouseActivity extends AppCompatActivity {
         displayMetrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
 
+        ip = getIntent().getStringExtra("IP");
+        port = getIntent().getIntExtra("port", 12324);
+        socketTask = new MouseActivity.SocketTask(ip, port, this);
+        socketTask.execute((Void) null);
+
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         sketch = new MouseSketch(this);
         PFragment fragment = new PFragment(sketch);
         fragment.setView(frame, this);
-
-        ip = (String)getIntent().getStringExtra("IP");
-        port = (int)getIntent().getIntExtra("port", 12324);
-        socketTask = new MouseActivity.SocketTask(ip, port, this);
-        socketTask.execute((Void) null);
     }
 
     @Override
@@ -146,27 +162,39 @@ public class MouseActivity extends AppCompatActivity {
     }
 
     public class SocketHandlerThread implements Runnable{
+        String data;
         PrintWriter out;
+        BufferedReader in;
         String value;
         private final String TAG = "SocketHandler";
         MouseActivity activity;
+        char[] buffer;
 
         public SocketHandlerThread(String ip, int port, MouseActivity activity) {
-            this.out = out;
-            this.value = value;
             this.activity = activity;
+            buffer = new char[512];
         }
 
 
         @Override
         public void run() {
+
             try {
                 InetAddress serverAddress = InetAddress.getByName(ip);
                 Socket socket = new Socket(serverAddress, port);
                 out = new PrintWriter(socket.getOutputStream(), true);
+                in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
                 Log.w(TAG, "In try.");
 
                 while(activity.getStillRunning()) {
+                    int charsRead = 0;
+                    data = "";
+
+                    if( ( in.ready() && (charsRead = in.read(buffer) ) != -1 )) {
+                        data += new String(buffer).substring(0, charsRead);
+                        activity.setScreenSize(data.toString());
+                        Log.w(TAG, "Data after: " + data);
+                    }
                     Log.w(TAG, "In loop");
                     out.println(x + " " + y);
                     Thread.sleep(100);

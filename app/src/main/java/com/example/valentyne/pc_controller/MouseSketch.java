@@ -13,12 +13,56 @@ public class MouseSketch extends PApplet {
     int ANDROID_ALLOWANCE = 150;
     PFont font;
     int w, h;
+    Mouse mouse;
+    String screenSize;
+    int screenWidth;
+    int screenHeight;
 
     public MouseSketch(MouseActivity activity) {
         this.activity = activity;
+        mouse = new Mouse(w/2, h/2);
         w = activity.getDisplayMetrics().widthPixels;
         h = activity.getDisplayMetrics().heightPixels;
         h = activity.getWindowManager().getDefaultDisplay().getHeight();
+
+        if(activity.getScreenSize() == null) {
+            delay(100);
+        }
+
+        screenSize = activity.getScreenSize();
+        screenWidth = getWidth(screenSize);
+        screenHeight = getHeight(screenSize);
+    }
+
+    int getWidth(String s)
+    {
+        char[] a = s.toCharArray();
+        int c, offset = 0, n = 0;
+
+        for (c = offset; a[c] >= '0' && a[c] <= '9'; c++)
+        {
+            n = n * 10 + a[c] - '0';
+        }
+
+        return n;
+    }
+
+    int getHeight(String s)
+    {
+        char[] a = s.toCharArray();
+        int c, offset = 0, i = 0, n = 0;
+
+        while (a[i] != ' ') {
+            offset = i + 2;
+            i++;
+        }
+
+        for (c = offset; a[c] >= '0' && a[c] <= '9'; c++)
+        {
+            n = n * 10 + a[c] - '0';
+        }
+
+        return n;
     }
 
     public void settings() {
@@ -35,48 +79,49 @@ public class MouseSketch extends PApplet {
     }
 
     public void setup() {
-        x = width / 2;
-        y = height / 2;
         stroke(0);
         font = createFont("SansSerif", 40);
     }
 
     public void draw() {
-        translate(width / 2, height / 2);
-        background(255, 255, 255);
-        fill(128);
-        ellipse(0, 0, RADIUS * 2, RADIUS * 2);
-        fill(128);
-        line(0, -height / 2, 0, height / 2);
-        line(-width / 2, 0, width / 2, 0);
+        background(128);
+        mouse.draw();
+        x = (int)mouse.getPosition().y;
+        y = (int)mouse.getPosition().x - w;
+        activity.setX((int)map(x, 0, h, 0, screenWidth));
+        activity.setY((int)map(y, 0, w, 0, screenHeight));
 
-        fill(77, 181, 171);
-        ellipse(x, y, RADIUS * 2, RADIUS * 2);
-
-        activity.setX(x);
-        activity.setY(-y);
-
-        fill(0);
         textFont(font);
-        text(x + ", " + -y, 100, -height / 2 + ANDROID_ALLOWANCE + 50);
-
-        if (!mousePressed) {
-            x = 0;
-            y = 0;
-        }
+        text(screenWidth + ", " + screenHeight, 100, ANDROID_ALLOWANCE + 50);
     }
 
     public void mouseDragged() {
-        x = mouseX - width / 2;
-        y = mouseY - height / 2;
+        mouse.move(mouseX, mouseY);
+    }
 
-        if (dist(0, 0, x, y) > ALLOWANCE) {
-            pos.x = x;
-            pos.y = y;
-            pos.normalize();
-            pos.mult(ALLOWANCE);
-            x = (int) pos.x;
-            y = (int) pos.y;
+    public class Mouse {
+        private PVector position;
+        final int DIAMETER = 100;
+
+        public Mouse(int x, int y){
+            position = new PVector();
+            this.position.x = x;
+            this.position.y = y;
+        }
+
+        public void draw()
+        {
+            fill(0);
+            ellipse(position.x, position.y, DIAMETER, DIAMETER);
+        }
+
+        public void move(int x, int y) {
+            position.x = x;
+            position.y = y;
+        }
+
+        public PVector getPosition(){
+            return position;
         }
     }
 }

@@ -57,7 +57,7 @@ public class ConnectActivity extends AppCompatActivity{
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_about:
-                Intent intent = new Intent("com.example.valentyne.socketController.AboutActivity");
+                Intent intent = new Intent("com.example.valentyne.pc_controller.AboutActivity");
                 startActivity(intent);
                 break;
 
@@ -241,7 +241,7 @@ public class ConnectActivity extends AppCompatActivity{
             showProgress(false);
 
             if (success) {
-                Intent i = new Intent("com.example.valentyne.socketController.ModeSelectionActivity");
+                Intent i = new Intent("com.example.valentyne.pc_controller.ModeSelectionActivity");
                 i.putExtra("error", 0);
                 i.putExtra("IP", ip);
                 i.putExtra("port", port);

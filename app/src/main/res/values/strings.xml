@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">PC_Controller</string>
+    <string name="app_name">PC Controller</string>
 
     <!-- Strings related to login -->
     <string name="prompt_IP">IP address</string>
@@ -15,6 +15,8 @@
     <string name="about_text">
         "About the Author:\nName: Valentine Edesiri Efagene\nNationality: Nigerian\nPhone Number: 07034360573\nWhatsapp: 07053229765\n\n\nAbout the App:\nIt is intented for use as a socket client with an arduino or an ESP32 or ESP8266 as the server.\n\nPress your phone's back button to return to the app's reception desk."
     </string>
+    <string name="about_activity_name">About</string>
+    <string name="mouse_activity_name">Mouse</string>
 
     <string-array name="modes_array">
         <item>Mouse</item>
