@@ -33,9 +33,30 @@ public class MouseActivity extends AppCompatActivity {
     private int port;
     private SocketTask socketTask;
     private boolean stillRunning = true;
-    private int x = 0;
-    private int y = 0;
+    private int x;
+    private int y;
     private String screenSize = null;
+
+    public String getAction() {
+        return action;
+    }
+
+    public void setAction(String action) {
+        this.action = action;
+    }
+
+    private String action;
+
+
+    public boolean isPressed() {
+        return pressed;
+    }
+
+    public void setPressed(boolean pressed) {
+        this.pressed = pressed;
+    }
+
+    private boolean pressed;
 
     public DisplayMetrics getDisplayMetrics() {
         return displayMetrics;
@@ -84,7 +105,7 @@ public class MouseActivity extends AppCompatActivity {
         socketTask.execute((Void) null);
 
         try {
-            Thread.sleep(100);
+            Thread.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -190,12 +211,22 @@ public class MouseActivity extends AppCompatActivity {
                     int charsRead = 0;
                     data = "";
 
-                    if( ( in.ready() && (charsRead = in.read(buffer) ) != -1 )) {
-                        data += new String(buffer).substring(0, charsRead);
-                        activity.setScreenSize(data.toString());
-                        Log.w(TAG, "Data after: " + data);
+                    if(activity.getScreenSize() == null) {
+                        if( ( in.ready() && (charsRead = in.read(buffer) ) != -1 )) {
+                            data += new String(buffer).substring(0, charsRead);
+                            activity.setScreenSize(data.toString());
+                            Log.w(TAG, "Data after: " + data);
+                        }
                     }
-                    Log.w(TAG, "In loop");
+
+                    if(activity.getAction() != null) {
+                        Log.w(TAG, "Action = " + activity.getAction());
+                        out.println(activity.getAction());
+                        Thread.sleep(100);
+                        activity.setAction(null);
+                    }
+
+                    Log.w(TAG, "Mouse");
                     out.println(x + " " + y);
                     Thread.sleep(100);
                     Log.w(TAG, "Still running.");
@@ -208,6 +239,11 @@ public class MouseActivity extends AppCompatActivity {
                 e.printStackTrace();
             }finally{
                 out.close();
+                try {
+                    in.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         }
     }
