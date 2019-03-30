@@ -88,8 +88,10 @@ public class KeyboardActivity extends AppCompatActivity {
 
                 if(caps) {
                     btn_caps.setBackgroundColor(Color.GRAY);
+                    message = "~C1";
                 }else{
                     btn_caps.setBackgroundColor(Color.WHITE);
+                    message = "~C0";
                 }
             }
         });
@@ -178,7 +180,7 @@ public class KeyboardActivity extends AppCompatActivity {
         btn_a.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                message = caps ? "~65" : "~97";
+                message = "~65";
             }
         });
 
@@ -186,7 +188,7 @@ public class KeyboardActivity extends AppCompatActivity {
         btn_b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                message = caps ? "~66" : "~98";
+                message = "~66";
             }
         });
 
@@ -194,7 +196,7 @@ public class KeyboardActivity extends AppCompatActivity {
         btn_c.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                message = caps ? "~67" : "~99";
+                message = "~67";
             }
         });
 
@@ -202,7 +204,7 @@ public class KeyboardActivity extends AppCompatActivity {
         btn_d.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                message = caps ? "~68" : "~100";
+                message = "~68";
             }
         });
 
@@ -210,7 +212,7 @@ public class KeyboardActivity extends AppCompatActivity {
         btn_e.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                message = caps ? "~69" : "~101";
+                message = "~69";
             }
         });
 
@@ -218,7 +220,7 @@ public class KeyboardActivity extends AppCompatActivity {
         btn_f.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                message = caps ? "~70" : "~102";
+                message = "~70";
             }
         });
 
@@ -226,7 +228,7 @@ public class KeyboardActivity extends AppCompatActivity {
         btn_g.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                message = caps ? "~71" : "~103";
+                message = "~71";
             }
         });
 
@@ -234,7 +236,7 @@ public class KeyboardActivity extends AppCompatActivity {
         btn_h.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                message = caps ? "~72" : "~104";
+                message = "~72";
             }
         });
 
@@ -242,7 +244,7 @@ public class KeyboardActivity extends AppCompatActivity {
         btn_i.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                message = caps ? "~73" : "~105";
+                message = "~73";
             }
         });
 
@@ -250,7 +252,7 @@ public class KeyboardActivity extends AppCompatActivity {
         btn_j.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                message = caps ? "~74" : "~106";
+                message = "~74";
             }
         });
 
@@ -258,7 +260,7 @@ public class KeyboardActivity extends AppCompatActivity {
         btn_k.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                message = caps ? "~75" : "~107";
+                message = "~75";
             }
         });
 
@@ -266,7 +268,7 @@ public class KeyboardActivity extends AppCompatActivity {
         btn_l.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                message = caps ? "~76" : "~108";
+                message = "~76";
             }
         });
 
@@ -274,7 +276,7 @@ public class KeyboardActivity extends AppCompatActivity {
         btn_m.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                message = caps ? "~77" : "~109";
+                message = "~77";
             }
         });
 
@@ -282,7 +284,7 @@ public class KeyboardActivity extends AppCompatActivity {
         btn_n.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                message = caps ? "~78" : "~110";
+                message = "~78";
             }
         });
 
@@ -290,7 +292,7 @@ public class KeyboardActivity extends AppCompatActivity {
         btn_o.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                message = caps ? "~79" : "~111";
+                message = "~79";
             }
         });
 
@@ -298,7 +300,7 @@ public class KeyboardActivity extends AppCompatActivity {
         btn_p.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                message = caps ? "~80" : "~112";
+                message = "~80";
             }
         });
 
@@ -306,7 +308,7 @@ public class KeyboardActivity extends AppCompatActivity {
         btn_q.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                message = caps ? "~81" : "~113";
+                message = "~81";
             }
         });
 
@@ -314,7 +316,7 @@ public class KeyboardActivity extends AppCompatActivity {
         btn_r.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                message = caps ? "~82" : "~114";
+                message = "~82";
             }
         });
 
@@ -322,7 +324,7 @@ public class KeyboardActivity extends AppCompatActivity {
         btn_s.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                message = caps ? "~83" : "~115";
+                message = "~83";
             }
         });
 
@@ -330,7 +332,7 @@ public class KeyboardActivity extends AppCompatActivity {
         btn_t.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                message = caps ? "~84" : "~116";
+                message = "~84";
             }
         });
 
@@ -338,7 +340,7 @@ public class KeyboardActivity extends AppCompatActivity {
         btn_u.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                message = caps ? "~85" : "~117";
+                message = "~85";
             }
         });
 
@@ -346,7 +348,7 @@ public class KeyboardActivity extends AppCompatActivity {
         btn_v.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                message = caps ? "~86" : "~118";
+                message = "~86";
             }
         });
 
@@ -354,7 +356,7 @@ public class KeyboardActivity extends AppCompatActivity {
         btn_w.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                message = caps ? "~87" : "~119";
+                message = "~87";
             }
         });
 
@@ -362,7 +364,7 @@ public class KeyboardActivity extends AppCompatActivity {
         btn_x.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                message = caps ? "~88" : "~120";
+                message = "~88";
             }
         });
 
@@ -370,7 +372,7 @@ public class KeyboardActivity extends AppCompatActivity {
         btn_y.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                message = caps ? "~89" : "~121";
+                message = "~89";
             }
         });
 
@@ -378,7 +380,7 @@ public class KeyboardActivity extends AppCompatActivity {
         btn_z.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                message = caps ? "~90" : "~122";
+                message = "~90";
             }
         });
     }
