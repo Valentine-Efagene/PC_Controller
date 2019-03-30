@@ -226,10 +226,9 @@ public class MouseActivity extends AppCompatActivity {
                         activity.setAction(null);
                     }
 
-                    Log.w(TAG, "Mouse");
+                    Log.w(TAG, x + " " + y);
                     out.println(x + " " + y);
                     Thread.sleep(100);
-                    Log.w(TAG, "Still running.");
                 }
             } catch (UnknownHostException e) {
                 Log.w(TAG, "Unknown host");

@@ -116,7 +116,6 @@ public class MouseSketch extends PApplet {
                 }
 
                 activity.setAction(new Integer(scrollValue).toString());
-
                 scroller.setX(width/2);
             }
         }
@@ -152,7 +151,8 @@ public class MouseSketch extends PApplet {
         if(mouseX < ANDROID_ALLOWANCE || mouseX > width - ANDROID_ALLOWANCE ||
                 mouseY < ANDROID_ALLOWANCE || mouseY > height - ANDROID_ALLOWANCE) {
             if(get(mouseX, mouseY) == scroller.getColor()){
-                text(new Integer((int)map(mouseX - width/2, 0, 740, 0, SCROLL_MAX)).toString(), width - 2 * ANDROID_ALLOWANCE, 50);
+                text(new Integer((int)map(mouseX - width/2, 0, 740, 0,
+                        SCROLL_MAX)).toString(), width - 2 * ANDROID_ALLOWANCE, 50);
                 scroller.setX(mouseX);
             }
 
@@ -326,6 +326,14 @@ public class MouseSketch extends PApplet {
 
         public void move(int x, int y) {
             position.x = x;
+            position.y = y;
+        }
+
+        public void moveX(int x) {
+            position.x = x;
+        }
+
+        public void moveY(int y) {
             position.y = y;
         }
 

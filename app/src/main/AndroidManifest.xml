@@ -42,6 +42,17 @@
         </intent-filter>
     </activity>
 
+        <activity
+            android:name=".KeyboardActivity"
+            android:label="@string/keyboard_activity_name">
+
+            <intent-filter>
+                <action android:name="com.example.valentyne.pc_controller.KeyboardActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
     <activity
         android:name=".AboutActivity"
         android:label="@string/about_activity_name">

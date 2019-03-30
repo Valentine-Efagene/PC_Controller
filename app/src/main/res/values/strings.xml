@@ -17,6 +17,45 @@
     </string>
     <string name="about_activity_name">About</string>
     <string name="mouse_activity_name">Mouse</string>
+    <string name="keyboard_activity_name">Keyboard</string>
+    <string name="btn_1">1</string>
+    <string name="btn_0">0</string>
+    <string name="btn_9">9</string>
+    <string name="btn_8">8</string>
+    <string name="btn_6">6</string>
+    <string name="btn_7">7</string>
+    <string name="btn_5">5</string>
+    <string name="btn_4">4</string>
+    <string name="btn_3">3</string>
+    <string name="btn_2">2</string>
+    <string name="btn_i">i</string>
+    <string name="btn_d">d</string>
+    <string name="btn_e">e</string>
+    <string name="btn_c">c</string>
+    <string name="btn_b">b</string>
+    <string name="btn_a">a</string>
+    <string name="btn_f">f</string>
+    <string name="btn_g">g</string>
+    <string name="btn_h">h</string>
+    <string name="btn_s">s</string>
+    <string name="btn_j">j</string>
+    <string name="btn_k">k</string>
+    <string name="btn_l">l</string>
+    <string name="btn_q">q</string>
+    <string name="btn_w">w</string>
+    <string name="btn_r">r</string>
+    <string name="btn_t">t</string>
+    <string name="btn_y">y</string>
+    <string name="btn_u">u</string>
+    <string name="btn_p">p</string>
+    <string name="btn_o">o</string>
+    <string name="btn_m">m</string>
+    <string name="btn_n">n</string>
+    <string name="btn_v">v</string>
+    <string name="btn_x">x</string>
+    <string name="btn_z">z</string>
+    <string name="caps">CAPS</string>
+    <string name="tab">TAB</string>
 
     <string-array name="modes_array">
         <item>Mouse</item>
